@@ -18,6 +18,10 @@ onMounted(() => {
       <router-link to="/users" class="nav-link active">Users</router-link>
     </li>
   </ul>
+  <div v-show="showSuccess" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Amazing progress!</strong> You have successfully added a task
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
   <div class="user">
     <div class="card-body">
       <!-- Button trigger Add user -->
@@ -114,7 +118,7 @@ onMounted(() => {
                 </div>
                 <input type="text" hidden="" v-model="role" class="form-control">
 
-                <button type="submit" class="btn btn-primary">Add</button>                          </form>
+                <button type="submit" @click="alertSuccess" data-bs-dismiss="modal"  class="btn btn-primary">Add</button>                          </form>
             </div>
           </div>
         </div>

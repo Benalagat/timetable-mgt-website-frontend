@@ -63,6 +63,16 @@ const routes = [
         component: home,
       },
       {
+        path: '/projects/overview/:id',
+        name: 'overview',
+        component: Overview,
+      },
+      {
+        path: '/projects/project_users:id',
+        name: 'project_users',
+        component: project_users,
+      },
+      {
         path: 'users',
         name: 'users',
         component: Users,
@@ -71,29 +81,17 @@ const routes = [
         path: '/projects',
         name: 'projects',
         component: Project,
-        children:[
-            {
-              path: '/overview/:id',
-              name: 'overview',
-              component: Overview,
-            },
-            {
-              path: '/project_users:id',
-              name: 'project_users',
-              component: project_users,
-            },
-            {
-              path: 'tasks/:id',
-              name: 'tasks',
-              component: Tasks,
-            }
-        ]
 
       }
 
     ]
-  }
-  ,
+  },
+
+  {
+    path: '/projects/tasks/:id',
+    name: 'tasks',
+    component: Tasks,
+  },
     {
     path: '/about',
     name: 'about',

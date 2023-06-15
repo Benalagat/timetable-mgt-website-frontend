@@ -4,7 +4,7 @@ import {onMounted} from "vue";
 import user from "@/modules/superadmin/user";
 
 
-let  {getUsers,users,assignRole,admins,name,getAdmins,editUser,saveUser,role,username,email,user_id}=user
+let  {getUsers,users,showSuccess,alertSuccess,assignRole,admins,name,getAdmins,editUser,saveUser,role,username,email,user_id}=user
 
 onMounted(() => {
   getUsers()
@@ -21,7 +21,10 @@ onMounted(() => {
       <router-link to="/users" class="nav-link " aria-current="page" >Users</router-link>
     </li>
   </ul>
-
+  <div v-show="showSuccess" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Amazing progress!</strong> You have successfully added a task
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
     <div class="admins" >
       <div class="card-body">
         <button data-bs-toggle="modal" @click="assignRole('admin')" data-bs-target="#admin_add_user" class="button btn mt-2 btn-success"> <i class="fas fa-plus"></i> Add Admin</button>
@@ -74,7 +77,7 @@ onMounted(() => {
                   </select>
                   <p>You selected: {{ selectedOption }}</p>
                 </div>
-                <button type="button" @click="updateUser(user_id)" class="btn bg-primary btn-secondary float-end" data-bs-dismiss="modal">Save changes</button>
+                <button type="button" @click="updateUser(user_id)"  class="btn bg-primary btn-secondary float-end" data-bs-dismiss="modal">Save changes</button>
               </div>
 
             </div>
@@ -121,12 +124,11 @@ onMounted(() => {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5 text-primary">Add New user</h1>
+          <h1 class="modal-title fs-5 text-primary">Create A New Admin</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="card">
-            <p>role{{role}}</p>
             <div class="card-body">
               <form @submit.prevent="saveUser">
                 <div class="mb-3">
@@ -139,7 +141,7 @@ onMounted(() => {
                 </div>
                 <input type="text" hidden="" v-model="role" class="form-control">
 
-                <button type="submit" class="btn btn-primary">Add</button>                          </form>
+                <button type="submit" @click="alertSuccess"  data-bs-dismiss="modal" class="btn btn-primary">Add</button>                          </form>
             </div>
           </div>
         </div>

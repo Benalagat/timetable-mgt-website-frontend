@@ -7,8 +7,6 @@ const token=localStorage.getItem('token');
 const headers = {
     'Authorization': `Bearer ${token}`,
 };
-// alert('')
-// fetching from db starts here
 const getAdmins=async () =>{
     const res = await axios.get('http://127.0.0.1:8000/api/show_admins', {
         headers
@@ -56,6 +54,7 @@ function editUser(id){
 function assignRole(value){
     role.value=value
 }
+
 const saveUser = async () => {
     // alert('creating new user')
 
@@ -66,20 +65,10 @@ const saveUser = async () => {
 
     const res = await axios.post('http://127.0.0.1:8000/api/create_users', formData,{ headers: headers });
     if(res.status === 200){
+        getUsers()
     }
 }
 
-// {
-//   path: 'projects',
-//   name: 'projects',
-//   component: projects,
-//   children: [
-//     {
-//       path: '/manage',
-//       name: 'manage',
-//       component: manage,
-//     }
-//   ]
-// }
+
 
 export default {getUsers,assignRole,users,admins,name,getAdmins,editUser,saveUser,role,username,email,user_id}
