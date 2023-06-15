@@ -11,12 +11,16 @@ const token=localStorage.getItem('token');
 const headers = {
     'Authorization': `Bearer ${token}`,
 };
-
+const edited_project_id = ref(null)
 async function createProject (event) {
     const formData = new FormData();
     formData.append('name', name.value);
     formData.append('description', description.value);
-    const res = await axios.post('http://127.0.0.1:8000/api/addprojects', formData,{ headers: headers })
+    let url = 'http://127.0.0.1:8000/api/addprojects'
+    if (edited_project_id !== null) {
+      url = url + '/' + edited_project_id.value
+    }
+    const res = await axios.post(url, formData,{ headers: headers })
 
     if(res.status === 200){
         alert('Created successfully')
@@ -34,11 +38,28 @@ async function getProject(event){
 onMounted(()=>{
     getProject()
 })
+let modal_title= ref(null)
+function editProject(project) {
+  if (project !=null) {
+    name.value = project.name
+    edited_project_id.value = project.id
+    description.value = project.description
+    modal_title.value = 'Edit Project'
+  } else {
+
+    name.value = null,
+    modal_title.value = 'Create Project'
+    description.value = null
+    edited_project_id.value = null
+  }
+  
+
+}
 </script>
 
 <template>
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  <button type="button" @click="editProject(null)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
     Create New Project <span> <i class="fa fa-plus" aria-hidden="true"></i></span>
   </button>
 
@@ -47,7 +68,7 @@ onMounted(()=>{
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Create Project</h1>
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ modal_title }}</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -81,7 +102,7 @@ onMounted(()=>{
     <tr v-for="project in projects" :key="project">      
       <td>{{project.name}}</td>
       <td>{{project.description}}</td>
-      <td><button @click="project.id" class="btn btn-primary">Edit</button></td>
+      <td><button @click="editProject(project)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</button></td>
       <td>
   <router-link :to="`projects/overview/${project.id}`" class="btn btn-success">Manage</router-link>
 </td>
