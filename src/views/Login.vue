@@ -18,14 +18,15 @@
               <label class="form-label" >Password</label>
               <input v-model="password" type="password" id="typePasswordX-2" class="form-control form-control-lg" />
             </div>
-
-
-
             <button type="submit" class="btn my-4 w-100 btn-primary btn-lg btn-block">Login</button>
+            <div>
+              <RouterLink to="/forgot-password">
+                <p class="mb-0 pd-5">Forgot Password </p>
+              </RouterLink>
+            </div>
             <div>
                 <p class="mb-0">Don't have an account? <a href="/register" >Sign Up</a>
               </p>
-
             </div>
             </form>
             

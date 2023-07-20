@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import About from '../views/about.vue'
+import ForgotPassword from '../views/ForgotPassword.vue'
+import ResetPassword from '../views/ResetPassword.vue'
+import FinishReset from '../views/FinishReset.vue'
 
 import '@fortawesome/fontawesome-free/css/all.css'
 import home from "@/views/dashboard/home.vue"
@@ -96,6 +99,21 @@ const routes = [
     path: '/about',
     name: 'about',
     component: About
+  },
+    {
+    path: '/forgot-password',
+    name: 'forgot-password',
+    component: ForgotPassword
+  },
+    {
+    path: '/reset-password',
+    name: 'reset-password',
+    component: ResetPassword
+  },
+    {
+    path: '/finish-password/:id',
+    name: 'finish-password',
+    component: FinishReset
   }
   ]
 
