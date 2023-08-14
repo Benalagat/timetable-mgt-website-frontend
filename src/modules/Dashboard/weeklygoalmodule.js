@@ -4,7 +4,7 @@ const randomWeekGoals = ref('');
 
 async function getRandomWeekGoals() {
   try {
-    const response = await axios.get('http://127.0.0.1:8000/api/getRandomWeekGoal');
+    const response = await axios.get('https://test.kwetunyumbani.online/api/getRandomWeekGoal');
     if (response.status === 200) {
       randomWeekGoals.value = response.data;
     } else {

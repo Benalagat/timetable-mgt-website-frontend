@@ -8,7 +8,7 @@ const headers = {
     'Authorization': `Bearer ${token}`,
 };
 const getAdmins=async () =>{
-    const res = await axios.get('http://127.0.0.1:8000/api/show_admins', {
+    const res = await axios.get('https://test.kwetunyumbani.online/api/show_admins', {
         headers
     });
     // console.log(res)
@@ -17,7 +17,7 @@ const getAdmins=async () =>{
     }
 }
 const getUsers=async () =>{
-    const res = await axios.get('http://127.0.0.1:8000/api/show_users', {
+    const res = await axios.get('https://test.kwetunyumbani.online/api/show_users', {
         headers
     });
     console.log(res)
@@ -63,7 +63,7 @@ const saveUser = async () => {
     formData.append('email', email.value);
     formData.append('role', role.value);
 
-    const res = await axios.post('http://127.0.0.1:8000/api/create_users', formData,{ headers: headers });
+    const res = await axios.post('https://test.kwetunyumbani.online/api/create_users', formData,{ headers: headers });
     if(res.status === 200){
         getUsers()
     }
@@ -75,7 +75,7 @@ const onDragEnd = () => {
     });
 
     // Make an API call to Laravel to update priorities in the database
-    axios.post('http://127.0.0.1:8000/api/create_users', users.value,{ headers: headers }).then((response) => {
+    axios.post('https://test.kwetunyumbani.online/api/create_users', users.value,{ headers: headers }).then((response) => {
       // Priority update successful
     });
   };

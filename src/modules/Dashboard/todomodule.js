@@ -9,7 +9,7 @@ const headers = {
 };
 const getTodos=async () =>{
 
-    const res = await axios.get('http://127.0.0.1:8000/api/show-tasks', {
+    const res = await axios.get('https://test.kwetunyumbani.online/api/show-tasks', {
         headers
     });
     console.log(res)
@@ -20,7 +20,7 @@ const getTodos=async () =>{
 }
 const deleteTask=async (id)=>{
     // alert(id)
-    const response = await axios.delete(`http://127.0.0.1:8000/api/tasks/${id}`);
+    const response = await axios.delete(`https://test.kwetunyumbani.online/api/tasks/${id}`);
     if(response.status===200){
         console.log(response.data)
         getTodos()
@@ -49,7 +49,7 @@ const submitTodo = async () => {
         formData.append('todo', todo.value);
         formData.append('todo_id', todo_id.value);
 
-        const res = await axios.post('http://127.0.0.1:8000/api/tasks', formData, { headers: headers });
+        const res = await axios.post('https://test.kwetunyumbani.online/api/tasks', formData, { headers: headers });
         if (res.status === 200) {
             getTodos();
             clearFields()

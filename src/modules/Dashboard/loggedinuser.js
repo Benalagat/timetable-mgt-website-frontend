@@ -12,7 +12,7 @@ const router = useRouter();
 const userEmail=ref([]);
 async function fetchUserName() {
   try {
-    const response = await axios.get('http://127.0.0.1:8000/api/user', {
+    const response = await axios.get('https://test.kwetunyumbani.online/api/user', {
     headers
   });
    userEmail.value = response.data.email;
@@ -24,7 +24,7 @@ async function fetchUserName() {
 const logoutUser = async () => {
   try {
 
-   await axios.get('http://127.0.0.1:8000/api/logout',{headers:headers});
+   await axios.get('https://test.kwetunyumbani.online/api/logout',{headers:headers});
    
     localStorage.removeItem('token')
     if(!token){

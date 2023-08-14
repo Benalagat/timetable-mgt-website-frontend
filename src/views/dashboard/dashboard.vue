@@ -256,7 +256,7 @@ const headers = {
 const updateUser = async (id) =>{
   const formData = new FormData()
   formData.append('role', selectedOption.value);
-  const res = await axios.post(`http://127.0.0.1:8000/api/users/update-user/${id}`, formData, {
+  const res = await axios.post(`https://test.kwetunyumbani.online/api/users/update-user/${id}`, formData, {
     headers
   });
   // console.log(res)
