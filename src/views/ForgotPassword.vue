@@ -7,7 +7,7 @@
     const handleForgotPassword = async()=>{
       const formData = new FormData()
       formData.append('email',email.value)
-        const res=await axios.post('http://127.0.0.1:8000/api/reset_password',formData)
+        const res=await axios.post('https://test.kwetunyumbani.online/api/reset_password',formData)
       if(res.status===200){
           if(res.data.status==='success'){
             success.value=res.data.message

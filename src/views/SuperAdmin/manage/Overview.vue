@@ -12,7 +12,7 @@ const id = route.params.id
 const details = ref([])
 
 const fetchOverview = async  () =>{
-  const res = await axios.get(`http://127.0.0.1:8000/api/fetch_overview/${id}`, { headers: headers });
+  const res = await axios.get(`https://test.kwetunyumbani.online/api/fetch_overview/${id}`, { headers: headers });
 
   if(res.status === 200){
     console.log(res)

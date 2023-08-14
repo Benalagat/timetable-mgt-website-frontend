@@ -12,7 +12,7 @@ otp.value=route.params.id
 const resetPassword = async()=>{
   const formData = new FormData()
   formData.append('password',password.value)
-  const res=await axios.post(`http://127.0.0.1:8000/api/change_password/${otp.value}`,formData)
+  const res=await axios.post(`https://test.kwetunyumbani.online/api/change_password/${otp.value}`,formData)
   if(res.status===200){
     if(res.data.status==='success'){
       success.value=res.data.message

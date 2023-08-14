@@ -67,7 +67,7 @@ function editProject(project) {
 
 }
 async function getProject(event){
-    const response= await axios.get('http://127.0.0.1:8000/api/getprojects',{ headers: headers })  
+    const response= await axios.get('https://test.kwetunyumbani.online/api/getprojects',{ headers: headers })  
     if(response.status == 200){
         // console.log('DKJNDJBJKDNXNDJN')
         projects.value=response.data.data

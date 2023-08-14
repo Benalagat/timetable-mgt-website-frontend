@@ -31,7 +31,7 @@ const submitReview = async () => {
       formData.append('description', description.value);
       
       
-      const res = await axios.post('http://127.0.0.1:8000/api/addReview', formData, { headers: head });
+      const res = await axios.post('https://test.kwetunyumbani.online/api/addReview', formData, { headers: head });
       if (res.status === 200) {
           getReviews();
           clearFields()
@@ -43,7 +43,7 @@ const submitReview = async () => {
 
 };
 const getReviews = async () => {
-  const response = await axios.get('http://127.0.0.1:8000/api/get-reviews',{headers:head});
+  const response = await axios.get('https://test.kwetunyumbani.online/api/get-reviews',{headers:head});
   reviews.value = response.data
 }
 function show_single_review(){
@@ -58,7 +58,7 @@ function editReview (id){
 }
 const  markComplete = async (id)=>{
   // alert(id)
-  const res = await axios.get(`http://127.0.0.1:8000/api/mark_completed/${id}`,{
+  const res = await axios.get(`https://test.kwetunyumbani.online/api/mark_completed/${id}`,{
     headers:head
   });
   if(res.status==200) {
