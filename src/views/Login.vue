@@ -54,7 +54,7 @@ const submit = async  () => {
   formData.append('email', email.value)
   formData.append('password', password.value)
 
-  const res = await axios.post('http://127.0.0.1:8000/api/login', formData)
+  const res = await axios.post('https://test.kwetunyumbani.online/api/login', formData)
   if(res.status === 200){
     // console.log(res.data.message)
     const id_no=res.data.user.role_id;
