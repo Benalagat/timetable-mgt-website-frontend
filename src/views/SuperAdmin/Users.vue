@@ -1,11 +1,14 @@
 <script setup>
 import {onMounted} from "vue";
+import draggable from 'vuedraggable';
 
 import user from "@/modules/superadmin/user";
 
-let  {getUsers,users,admins,name,getAdmins,editUser,saveUser,role,assignRole,username,email,user_id}=user
+
+let  {getUsers,onDragEnd,users,admins,name,getAdmins,editUser,saveUser,role,assignRole,username,email,user_id}=user
 onMounted(() => {
   getUsers()
+  onDragEnd()
 })
 </script>
 
@@ -42,20 +45,24 @@ onMounted(() => {
         </tr>
         </thead>
         <tbody>
-        <tr v-for="user in users" :key="user">
+        <draggable v-model="users" tag="tbody">
+          <template #item="{ element: user }">
+            <tr :key="user.id">
           <th scope="row"><a href="#">#{{user.id}}</a></th>
           <td>{{user.name}}</td>
           <td>{{user.email}}</td>
           <td>{{user.role}}</td>
           <td>
-                   <span class="badge bg-success p-2" @click="editUser(user.id)" data-bs-toggle="modal" data-bs-target="#editUser">
+          <span class="badge bg-success p-2" @click="editUser(user.id)" data-bs-toggle="modal" data-bs-target="#editUser">
                    Edit Role</span>
           </td>
           <td><span class="badge bg-danger p-2" @click="updateUser">Delete</span></td>
         </tr>
-
+          </template>
+        </draggable>
         </tbody>
       </table>
+ 
     </div>
   </div>
 

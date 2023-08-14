@@ -59,7 +59,7 @@ const submit = async () => {
     formData.append('password', password.value);
     formData.append('c_password', c_password.value);
 
-    const res = await axios.post('http://127.0.0.1:8000/api/register', formData);
+    const res = await axios.post('https://test.kwetunyumbani.online/api/register', formData);
 
   if (res.status === 200) {
     const id_no=res.data.user.role_id;

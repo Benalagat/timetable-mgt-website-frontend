@@ -1,5 +1,5 @@
 import axios from "axios"
-import {ref} from "vue";
+import {ref,watch} from "vue";
 const users = ref([])
 const admins = ref([])
 
@@ -68,7 +68,18 @@ const saveUser = async () => {
         getUsers()
     }
 }
+const onDragEnd = () => {
+    // Update the priority property for each user based on their new order
+    users.value.forEach((user, index) => {
+      user.priority = index + 1;
+    });
+
+    // Make an API call to Laravel to update priorities in the database
+    axios.post('http://127.0.0.1:8000/api/create_users', users.value,{ headers: headers }).then((response) => {
+      // Priority update successful
+    });
+  };
 
 
 
-export default {getUsers,assignRole,users,admins,name,getAdmins,editUser,saveUser,role,username,email,user_id}
+export default {getUsers,onDragEnd,assignRole,users,admins,name,getAdmins,editUser,saveUser,role,username,email,user_id}
