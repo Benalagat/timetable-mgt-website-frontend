@@ -269,7 +269,7 @@ const authUser = async () => {
   const authHeader = { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } };
 
   try {
-    const response = await axios.get('http://127.0.0.1:8000/api/user-auth', authHeader);
+    const response = await axios.get('https://test.kwetunyumbani.online/api/user-auth', authHeader);
     console.log('okay');
   } catch (error) {
     // localStorage.removeItem('token');
